@@ -11,7 +11,7 @@ import SwiftUI
 struct EURApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PrincepsView()
         }
     }
 }
