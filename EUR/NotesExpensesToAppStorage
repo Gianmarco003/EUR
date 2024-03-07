@@ -1,0 +1,16 @@
+{
+final class Summary: ObservableObject{
+    @AppStorage("expenses") private var expensesStorage: Data?
+    
+    @Published var expenses: [Expense] = []
+    
+    func add(_ expense: Expense) {
+        expenses.append(expense)
+        let data = try JSONEncoder().encode(user)
+            expensesStorage = data
+    }
+    
+    func deleteItems(at offsets: IndexSet) {
+        expenses.remove(atOffsets: offsets)
+    }
+}
