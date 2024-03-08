@@ -10,12 +10,12 @@ import SwiftUI
 struct NewExpenseFormView: View {
     
     @Binding var isPresentedForm: Bool
-    @Binding var Expenses: [Expense]
     @State var newExpense: Expense = Expense(description: "",
                                              amount: 0,
                                              date: Date(),
                                              category: "")
     @State var strAmount = ""
+    @StateObject var AppStorage = ExpensesAppStorage()
     
     var body: some View {
         NavigationStack() {
@@ -48,7 +48,7 @@ struct NewExpenseFormView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         newExpense.amount = Double(strAmount)!
-                        Expenses.append(newExpense)
+                        AppStorage.add(newExpense)
                         isPresentedForm.toggle()
                     } label: {
                         Text("Add")
