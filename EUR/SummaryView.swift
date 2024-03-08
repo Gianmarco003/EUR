@@ -9,38 +9,29 @@ import SwiftUI
 
 struct SummaryView: View {
     
-    @EnvironmentObject var summary: Summary
+    @StateObject var AppStorage = ExpensesAppStorage()
     @State var isPresentedForm: Bool = false
     
     var body: some View {
         ZStack {
             NavigationView(){
-                ZStack{
-                    List (summary.expenses) { expense in
+                List {
+                    ForEach(AppStorage.getExpenses()) { expense in
                         CompactExpenseView(expense: expense)
                     }
-                    List {
-                        ForEach(summary.expenses) { expense in
-                            CompactExpenseView(expense: expense)
-                        }
-                        .onDelete (perform: summary.deleteItems)
-                    }
-                    VStack {
-                        Spacer()
-                        Button {
-                            isPresentedForm.toggle()
-                        } label: {
-                            Text("Add expense")
-                                .fontWeight(.bold)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
-                    }
+                    .onDelete (perform: AppStorage.deleteItems)
                 }
                 .navigationTitle("Expenses")
+                .toolbar() {
+                    Button {
+                        isPresentedForm.toggle()
+                    } label: {
+                        Text("Add expense")
+                    }
+                }
             }
             .sheet(isPresented: $isPresentedForm) {
-                NewExpenseFormView(isPresentedForm: $isPresentedForm, Expenses: $summary.expenses)
+                NewExpenseFormView(isPresentedForm: $isPresentedForm)
             }
         }
     }
