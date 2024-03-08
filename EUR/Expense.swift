@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Expense: Identifiable {
+struct Expense: Identifiable, Codable {
     var id = UUID()
     var description: String
     var amount: Double
@@ -35,14 +35,3 @@ struct MockData {
                                          category: "")]
 }
 
-final class Summary: ObservableObject{
-    @Published var expenses: [Expense] = []
-    
-    func add(_ expense: Expense) {
-        expenses.append(expense)
-    }
-    
-    func deleteItems(at offsets: IndexSet) {
-        expenses.remove(atOffsets: offsets)
-    }
-}
