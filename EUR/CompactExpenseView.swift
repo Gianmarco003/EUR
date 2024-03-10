@@ -26,7 +26,7 @@ struct CompactExpenseView: View {
             }
             .padding(.leading, 10)
             Spacer()
-            Text("\(expense.amount, specifier: "%.2f")€")
+            Text("\(expense.price, specifier: "%.2f")€")
                 .font(.title3)
                 .fontWeight(.semibold)
         }

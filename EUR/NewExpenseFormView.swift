@@ -11,10 +11,10 @@ struct NewExpenseFormView: View {
     
     @Binding var isPresentedForm: Bool
     @State var newExpense: Expense = Expense(description: "",
-                                             amount: 0,
+                                             price: 0,
                                              date: Date(),
                                              category: "")
-    @State var strAmount = ""
+    @State var strPrice = ""
     @StateObject var AppStorage = ExpensesAppStorage()
     
     var body: some View {
@@ -23,13 +23,13 @@ struct NewExpenseFormView: View {
                 Section {
                     TextField("Description", text: $newExpense.description)
                     Picker("Category", selection: $newExpense.category) {
-                        Text("Food").tag("Food")
-                        Text("Gas").tag("Gas")
-                        Text("Clothes").tag("Clothes")
+                        ForEach(categories, id: \.self) { category in
+                            Text(category)
+                        }
                     }
-                    TextField("Amount", text: $strAmount)
+                    TextField("Amount", text: $strPrice)
                         .keyboardType(.decimalPad)
-                    DatePicker( "Date", selection: $newExpense.date, displayedComponents: .date)
+                    DatePicker("Date", selection: $newExpense.date, displayedComponents: .date)
                 }
             }
             .toolbar {
@@ -47,7 +47,7 @@ struct NewExpenseFormView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        newExpense.amount = Double(strAmount)!
+                        newExpense.price = Double(strPrice)!
                         AppStorage.add(newExpense)
                         isPresentedForm.toggle()
                     } label: {
@@ -60,8 +60,8 @@ struct NewExpenseFormView: View {
     }
 }
 
-//struct NewExpenseFormView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewExpenseFormView(isPresentedForm: .constant(true), Expenses: MockData.sampleExpenses)
-//    }
-//}
+struct NewExpenseFormView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewExpenseFormView(isPresentedForm: .constant(true))
+    }
+}
