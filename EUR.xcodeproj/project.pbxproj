@@ -17,6 +17,10 @@
 		1B2D0EE92B910E6100BB4F73 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D0EE82B910E6100BB4F73 /* Expense.swift */; };
 		1B8D66152B9A6BEB00B80B4D /* ExpensesAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D66142B9A6BEB00B80B4D /* ExpensesAppStorage.swift */; };
 		1B8D66172B9B322400B80B4D /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D66162B9B322400B80B4D /* Array+Ext.swift */; };
+		1BC1280B2B9D34FE0088BC26 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1280A2B9D34FE0088BC26 /* Date+Ext.swift */; };
+		1BC1280F2B9D40390088BC26 /* CalendarElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1280E2B9D40390088BC26 /* CalendarElements.swift */; };
+		1BC128112B9D4BBC0088BC26 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC128102B9D4BBC0088BC26 /* Categories.swift */; };
+		1BC128132B9D4F8F0088BC26 /* ChangeYearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC128122B9D4F8F0088BC26 /* ChangeYearView.swift */; };
 		1BFD9D922B93200500237FF8 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD9D912B93200500237FF8 /* AccountView.swift */; };
 		1BFD9D942B932DA700237FF8 /* DefermentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD9D932B932DA700237FF8 /* DefermentView.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +37,10 @@
 		1B2D0EE82B910E6100BB4F73 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		1B8D66142B9A6BEB00B80B4D /* ExpensesAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesAppStorage.swift; sourceTree = "<group>"; };
 		1B8D66162B9B322400B80B4D /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		1BC1280A2B9D34FE0088BC26 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		1BC1280E2B9D40390088BC26 /* CalendarElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarElements.swift; sourceTree = "<group>"; };
+		1BC128102B9D4BBC0088BC26 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		1BC128122B9D4F8F0088BC26 /* ChangeYearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeYearView.swift; sourceTree = "<group>"; };
 		1BD820172B97C1BE00AE3F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BFD9D912B93200500237FF8 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		1BFD9D932B932DA700237FF8 /* DefermentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefermentView.swift; sourceTree = "<group>"; };
@@ -81,6 +89,10 @@
 				1B2D0EE82B910E6100BB4F73 /* Expense.swift */,
 				1B8D66142B9A6BEB00B80B4D /* ExpensesAppStorage.swift */,
 				1B8D66162B9B322400B80B4D /* Array+Ext.swift */,
+				1BC1280A2B9D34FE0088BC26 /* Date+Ext.swift */,
+				1BC1280E2B9D40390088BC26 /* CalendarElements.swift */,
+				1BC128102B9D4BBC0088BC26 /* Categories.swift */,
+				1BC128122B9D4F8F0088BC26 /* ChangeYearView.swift */,
 			);
 			path = EUR;
 			sourceTree = "<group>";
@@ -167,12 +179,16 @@
 				1B0714A52B9253D4000AA610 /* SummaryView.swift in Sources */,
 				1B2D0ED12B91005C00BB4F73 /* PrincepsView.swift in Sources */,
 				1B0714A32B925394000AA610 /* NewExpenseFormView.swift in Sources */,
+				1BC1280F2B9D40390088BC26 /* CalendarElements.swift in Sources */,
 				1BFD9D942B932DA700237FF8 /* DefermentView.swift in Sources */,
 				1BFD9D922B93200500237FF8 /* AccountView.swift in Sources */,
+				1BC1280B2B9D34FE0088BC26 /* Date+Ext.swift in Sources */,
 				1B2D0EE52B9108CE00BB4F73 /* CompactExpenseView.swift in Sources */,
 				1B8D66172B9B322400B80B4D /* Array+Ext.swift in Sources */,
 				1B8D66152B9A6BEB00B80B4D /* ExpensesAppStorage.swift in Sources */,
 				1B2D0ECF2B91005C00BB4F73 /* EURApp.swift in Sources */,
+				1BC128112B9D4BBC0088BC26 /* Categories.swift in Sources */,
+				1BC128132B9D4F8F0088BC26 /* ChangeYearView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
