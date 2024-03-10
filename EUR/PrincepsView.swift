@@ -11,7 +11,7 @@ struct PrincepsView: View {
     
     var body: some View {
         TabView {
-            SummaryView()
+            SummaryView(selectedYear: Date().get(.year))
                 .tabItem{
                     Label("Summary", systemImage: "list.bullet.rectangle")
                 }
