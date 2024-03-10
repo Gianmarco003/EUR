@@ -24,17 +24,31 @@ final class ExpensesAppStorage: ObservableObject{
         return expensesStorage
     }
     
-    func getExpensesByMonth(Month: Date) -> [Expense] {
+    func getExpensesByMonth (Month: Int, Year: Int) -> [Expense] {
         
         var expensesByMonth: [Expense] = []
         
         for expense in expensesStorage {
-            if (true) {
-                
+            if (expense.date.get(.year) == Year) {
+                if (expense.date.get(.month) == Month) {
+                    expensesByMonth.append(expense)
+                }
             }
         }
         
         return expensesByMonth
+    }
+    
+    func getTotalExpensesByMonth (Month: Int, Year: Int) -> Double {
+        var totalExpensesByMonth: Double = 0
+        
+        for expense in expensesStorage {
+            if (expense.date.get(.year) == Year) {
+                if (expense.date.get(.month) == Month) {
+                    totalExpensesByMonth += expense.price                }
+            }
+        }
+        return totalExpensesByMonth
     }
     
 }
