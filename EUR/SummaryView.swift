@@ -12,18 +12,24 @@ struct SummaryView: View {
     @StateObject var AppStorage = ExpensesAppStorage()
     @State var isPresentedForm: Bool = false
     @State var isPresentedChangeYear: Bool = false
-    @State var selectedYear: Int
+    @State var selectedYear = Date().get(.year)
+    //@State var monthLimit = selectedYear == Date().get(.year) ? Date().get(.month):12
     
     var body: some View {
         NavigationStack(){
-            List(1...Date().get(.month), id: \.self) {month in
+            List(1...12,
+                 id: \.self) {month in
                 NavigationLink{
                     List {
                         ForEach(AppStorage.getExpensesByMonth(
                             Month: month,
                             Year: selectedYear))
                         { expense in
-                            CompactExpenseView(expense: expense)
+                            NavigationLink {
+                                DetailExpenseView(expense: expense)
+                            } label: {
+                                CompactExpenseView(expense: expense)
+                            }
                         }
                         .onDelete (perform: AppStorage.deleteItems)
                     }
@@ -41,7 +47,6 @@ struct SummaryView: View {
             label: {
                 HStack {
                     Text(getMonthName(Month: month))
-                        .font(.title2)
                     Spacer()
                     Text("- \(AppStorage.getTotalExpensesByMonth(Month: month, Year: selectedYear), specifier: "%.2f")€")
                         .fontWeight(.semibold)
@@ -49,7 +54,7 @@ struct SummaryView: View {
                 }
             }
             }
-            .navigationTitle("\(selectedYear)")
+            .navigationTitle(String(selectedYear))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -72,9 +77,6 @@ struct SummaryView: View {
         }
         .sheet(isPresented: $isPresentedChangeYear) {
             ChangeYearView(isPresentedChangeYear: $isPresentedChangeYear, selectedYear: $selectedYear)
-        }
-        .onAppear {
-            selectedYear = Date().get(.year)
         }
     }
 }
