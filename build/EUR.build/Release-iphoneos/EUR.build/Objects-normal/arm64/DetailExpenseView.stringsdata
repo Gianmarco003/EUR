@@ -1,0 +1,16 @@
+{
+  "source": "/Users/gianmarco/GitHub/EUR/EUR/DetailExpenseView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%.2f€"
+      },
+      {
+        "comment": "",
+        "key": "%@"
+      }
+    ]
+  },
+  "version": 1
+}

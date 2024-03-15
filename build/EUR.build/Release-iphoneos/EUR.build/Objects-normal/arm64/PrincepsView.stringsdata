@@ -1,0 +1,20 @@
+{
+  "source": "/Users/gianmarco/GitHub/EUR/EUR/PrincepsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Summary"
+      },
+      {
+        "comment": "",
+        "key": "Deferment"
+      },
+      {
+        "comment": "",
+        "key": "Account"
+      }
+    ]
+  },
+  "version": 1
+}

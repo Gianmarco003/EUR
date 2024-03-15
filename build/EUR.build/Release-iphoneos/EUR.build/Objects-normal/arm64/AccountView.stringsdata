@@ -1,0 +1,12 @@
+{
+  "source": "/Users/gianmarco/GitHub/EUR/EUR/AccountView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Hello, World!"
+      }
+    ]
+  },
+  "version": 1
+}

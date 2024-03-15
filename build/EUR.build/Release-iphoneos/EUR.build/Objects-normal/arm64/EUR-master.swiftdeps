@@ -1,0 +1,20 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "c5d22e171db401f5bf57534935f47bc54310892f913b49dc55a6cae078ab7d4d"
+build_start_time: [1710525372, 343852996]
+build_end_time: [1710525400, 815644025]
+inputs:
+  "/Users/gianmarco/GitHub/EUR/EUR/AccountView.swift": [1709369477, 17069339]
+  "/Users/gianmarco/GitHub/EUR/EUR/Array+Ext.swift": [1709898410, 147173881]
+  "/Users/gianmarco/GitHub/EUR/EUR/CalendarElements.swift": [1710034379, 939025878]
+  "/Users/gianmarco/GitHub/EUR/EUR/Categories.swift": [1710258009, 342047691]
+  "/Users/gianmarco/GitHub/EUR/EUR/ChangeYearView.swift": [1710525297, 417102336]
+  "/Users/gianmarco/GitHub/EUR/EUR/CompactExpenseView.swift": [1710255392, 552700042]
+  "/Users/gianmarco/GitHub/EUR/EUR/Date+Ext.swift": [1710030257, 152097225]
+  "/Users/gianmarco/GitHub/EUR/EUR/DefermentView.swift": [1709373048, 641584873]
+  "/Users/gianmarco/GitHub/EUR/EUR/DetailExpenseView.swift": [1710437531, 713117599]
+  "/Users/gianmarco/GitHub/EUR/EUR/EURApp.swift": [1709922896, 409392833]
+  "/Users/gianmarco/GitHub/EUR/EUR/Expense.swift": [1710004991, 680449485]
+  "/Users/gianmarco/GitHub/EUR/EUR/ExpensesAppStorage.swift": [1710437886, 256489276]
+  "/Users/gianmarco/GitHub/EUR/EUR/NewExpenseFormView.swift": [1710257960, 194197654]
+  "/Users/gianmarco/GitHub/EUR/EUR/PrincepsView.swift": [1710037561, 812612295]
+  "/Users/gianmarco/GitHub/EUR/EUR/SummaryView.swift": [1710525009, 67085027]

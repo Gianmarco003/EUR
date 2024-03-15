@@ -1,0 +1,36 @@
+{
+  "source": "/Users/gianmarco/GitHub/EUR/EUR/ChangeYearView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Select year"
+      },
+      {
+        "comment": "",
+        "key": "Year"
+      },
+      {
+        "comment": "",
+        "key": "2024"
+      },
+      {
+        "comment": "",
+        "key": "2023"
+      },
+      {
+        "comment": "",
+        "key": "2022"
+      },
+      {
+        "comment": "",
+        "key": "Back"
+      },
+      {
+        "comment": "",
+        "key": "Done"
+      }
+    ]
+  },
+  "version": 1
+}

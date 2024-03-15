@@ -1,0 +1,20 @@
+{
+  "source": "/Users/gianmarco/GitHub/EUR/EUR/SummaryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Add expense"
+      },
+      {
+        "comment": "",
+        "key": "- %.2f€"
+      },
+      {
+        "comment": "",
+        "key": "Change year"
+      }
+    ]
+  },
+  "version": 1
+}
