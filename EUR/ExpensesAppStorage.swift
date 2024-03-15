@@ -14,6 +14,7 @@ final class ExpensesAppStorage: ObservableObject{
     
     func add(_ expense: Expense) {
         expensesStorage.append(expense)
+        expensesStorage.sort { $0.date > $1.date }
     }
     
     func deleteItems(at offsets: IndexSet) {
