@@ -13,7 +13,7 @@ struct NewExpenseFormView: View {
     @State var newExpense: Expense = Expense(description: "",
                                              price: 0,
                                              date: Date(),
-                                             category: "")
+                                             category: "None")
     @State var strPrice = ""
     @StateObject var AppStorage = ExpensesAppStorage()
     
