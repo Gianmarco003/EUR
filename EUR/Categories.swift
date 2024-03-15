@@ -7,4 +7,7 @@
 
 import SwiftUI
 
-public var categories = ["Food", "Gas", "Clothes"]
+public var categories = ["None",
+                         "Food",
+                         "Gas",
+                         "Clothes"]
