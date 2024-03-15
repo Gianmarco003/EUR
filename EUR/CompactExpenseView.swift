@@ -21,13 +21,14 @@ struct CompactExpenseView: View {
                 Text(expense.description)
                     .font(.body)
                     .fontWeight(.semibold)
+                Text(expense.category)
                 Text("\(expense.date.formatted(date: .abbreviated, time: .omitted))")
                     .font(.callout)
             }
             .padding(.leading, 10)
             Spacer()
-            Text("\(expense.price, specifier: "%.2f")€")
-                .font(.title3)
+                Text("\(expense.price, specifier: "%.2f")€")
+                    .font(.title3)
                 .fontWeight(.semibold)
         }
     }
