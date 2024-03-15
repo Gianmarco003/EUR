@@ -11,10 +11,17 @@ struct ChangeYearView: View {
     
     @Binding var isPresentedChangeYear: Bool
     @Binding var selectedYear: Int
+    @State var selectedYearList = Date().get(.year)
     
     var body: some View {
         NavigationView() {
-            Text("\(selectedYear)")
+            List {
+                Picker("Year", selection: $selectedYearList) {
+                        Text("2024").tag(2024)
+                        Text("2023").tag(2023)
+                        Text("2022").tag(2022)
+                    }
+            }
             .navigationTitle("Select year")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -24,8 +31,15 @@ struct ChangeYearView: View {
                         Text("Back")
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        selectedYear = selectedYearList
+                        isPresentedChangeYear.toggle()
+                    } label: {
+                        Text("Done")
+                    }
+                }
             }
-            
         }
     }
 }
