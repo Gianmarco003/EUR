@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SummaryView: View {
     
-    @StateObject var AppStorage = ExpensesAppStorage()
+    @StateObject var AppStorage = PermanentStorage()
     @State var isPresentedForm: Bool = false
     @State var isPresentedChangeYear: Bool = false
     @State var selectedYear = Date().get(.year)
@@ -31,7 +31,7 @@ struct SummaryView: View {
                                 CompactExpenseView(expense: expense)
                             }
                         }
-                        .onDelete (perform: AppStorage.deleteItems)
+                        .onDelete (perform: AppStorage.deleteExpense)
                     }
                     .navigationTitle(getMonthName(Month: month))
                     .toolbar {

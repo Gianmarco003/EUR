@@ -15,7 +15,7 @@ struct NewExpenseFormView: View {
                                              date: Date(),
                                              category: "None")
     @State var strPrice = ""
-    @StateObject var AppStorage = ExpensesAppStorage()
+    @StateObject var AppStorage = PermanentStorage()
     
     var body: some View {
         NavigationStack() {
@@ -23,7 +23,7 @@ struct NewExpenseFormView: View {
                 Section {
                     TextField("Description", text: $newExpense.description)
                     Picker("Category", selection: $newExpense.category) {
-                        ForEach(categories, id: \.self) { category in
+                        ForEach(AppStorage.getCategories(), id: \.self) { category in
                             Text(category)
                         }
                     }
@@ -48,7 +48,7 @@ struct NewExpenseFormView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         newExpense.price = Double(strPrice)!
-                        AppStorage.add(newExpense)
+                        AppStorage.addExpense(newExpense)
                         isPresentedForm.toggle()
                     } label: {
                         Text("Add")
