@@ -11,10 +11,7 @@ import SwiftUI
 
 final class PermanentStorage: ObservableObject{
     @AppStorage("expenses") private var expensesStorage: [Expense] = []
-    @AppStorage("categories") private var categoriesStorage: [String] = ["None",
-                                                                         "Food",
-                                                                         "Gas",
-                                                                         "Clothes"]
+    @AppStorage("categories") private var categoriesStorage: [String] = ["None"]
     
     func addExpense(_ expense: Expense) {
         expensesStorage.append(expense)
@@ -22,18 +19,27 @@ final class PermanentStorage: ObservableObject{
     }
     
     func addCategory(NewCategory: String) {
-        categoriesStorage.append(NewCategory)
-        categoriesStorage.sort { $0 > $1 }
+        if !categoriesStorage.contains(NewCategory) {
+            categoriesStorage.append(NewCategory)
+            categoriesStorage.sort()
+        }
     }
     
     func deleteExpense(at offsets: IndexSet) {
         expensesStorage.remove(atOffsets: offsets)
     }
     
+    func deleteCategory(at offsets: IndexSet) {
+        categoriesStorage.remove(atOffsets: offsets)
+        if categoriesStorage.isEmpty {
+            categoriesStorage = ["None"]
+        }
+    }
+    
     func deleteAllExpenses() {
         expensesStorage = []
     }
-
+    
     
     func deleteCategories() {
         categoriesStorage = ["None"]

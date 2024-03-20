@@ -17,8 +17,7 @@ struct SummaryView: View {
     
     var body: some View {
         NavigationStack(){
-            List(1...12,
-                 id: \.self) {month in
+            List(1...12, id: \.self) {month in
                 NavigationLink{
                     List {
                         ForEach(AppStorage.getExpensesByMonth(
@@ -54,23 +53,23 @@ struct SummaryView: View {
                 }
             }
             }
-            .navigationTitle(String(selectedYear))
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isPresentedForm.toggle()
-                    } label: {
-                        Text("Add expense")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        isPresentedChangeYear.toggle()
-                    } label: {
-                        Text("Change year")
-                    }
-                }
-            }
+                 .navigationTitle(String(selectedYear))
+                 .toolbar {
+                     ToolbarItem(placement: .navigationBarTrailing) {
+                         Button {
+                             isPresentedForm.toggle()
+                         } label: {
+                             Text("Add expense")
+                         }
+                     }
+                     ToolbarItem(placement: .navigationBarLeading) {
+                         Button {
+                             isPresentedChangeYear.toggle()
+                         } label: {
+                             Text("Change year")
+                         }
+                     }
+                 }
         }
         .sheet(isPresented: $isPresentedForm) {
             NewExpenseFormView(isPresentedForm: $isPresentedForm)

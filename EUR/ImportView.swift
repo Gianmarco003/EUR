@@ -13,15 +13,13 @@ struct ImportView: View {
     
     @State private var importing = false
     @State private var exporting = false
-    @StateObject var AppStorage = PermanentStorage()
-    
+    @StateObject var AppStorage = PermanentStorage()    
     
     var body: some View {
-        VStack {
+        List {
             Button("Import") {
                 importing = true
             }
-            .buttonStyle(.bordered)
             .fileImporter(
                 isPresented: $importing,
                 allowedContentTypes: [.commaSeparatedText]
@@ -52,29 +50,26 @@ struct ImportView: View {
                     print("Error while importing!")
                 }
             }
-            Button("Export") {
-                exporting = true
-                var CSVString = "Description;Price;Date;Categories\n"
-                var CSVFile: Data = CSVString
-                
-            }
-            .buttonStyle(.bordered)
-            .fileExporter(isPresented: $exporting, documents: , contentType: .commaSeparatedText) {
-                
-            }
+//            Button("Export") {
+//                exporting = true
+//                var CSVString = "Description;Price;Date;Categories\n"
+//                var CSVFile: Data = CSVString
+//
+//            }
+//            .buttonStyle(.bordered)
+//            .fileExporter(isPresented: $exporting, documents: , contentType: .commaSeparatedText) {
+//
+//            }
             Button {
                 AppStorage.deleteCategories()
             } label: {
                 Text("Delete categories")
             }
-            .buttonStyle(.bordered)
             Button {
                 AppStorage.deleteAllExpenses()
             } label: {
                 Text("Delete expenses")
             }
-            .buttonStyle(.bordered)
-            
         }
     }
 }
