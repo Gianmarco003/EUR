@@ -9,33 +9,30 @@ import SwiftUI
 
 struct OutcomeForm: View {
     
-    @State var newExpense: Expense = Expense(description: "",
-                                             price: 0,
-                                             date: Date(),
-                                             category: "None")
+    @Binding var newExpense: Expense
     @Binding var strPrice: String
     @StateObject var AppStorage = PermanentStorage()
     
     var body: some View {
-            Form {
-                Section {
-                    TextField("Description", text: $newExpense.description)
-                    Picker("Category", selection: $newExpense.category) {
-                        ForEach(AppStorage.getCategories(), id: \.self) { category in
-                            Text(category)
-                        }
+        Form {
+            Section {
+                TextField("Description", text: $newExpense.description)
+                Picker("Category", selection: $newExpense.category) {
+                    ForEach(AppStorage.getCategories(), id: \.self) { category in
+                        Text(category)
                     }
-                    TextField("Amount", text: $strPrice)
-                        .keyboardType(.decimalPad)
-                    DatePicker("Date", selection: $newExpense.date, displayedComponents: .date)
                 }
+                TextField("Amount", text: $strPrice)
+                    .keyboardType(.decimalPad)
+                DatePicker("Date", selection: $newExpense.date, displayedComponents: .date)
             }
-        
+        }
+        .navigationTitle("New outcome")
     }
 }
 
 struct OutcomeForm_Previews: PreviewProvider {
     static var previews: some View {
-        OutcomeForm(strPrice: .constant(""))
+        OutcomeForm(newExpense: .constant(MockData.sampleExpense) , strPrice: .constant(""))
     }
 }
