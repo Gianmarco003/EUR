@@ -26,9 +26,9 @@ struct NewMovementFormView: View {
         NavigationStack() {
             VStack {
                 if NewMovementType {
-                    OutcomeForm(strPrice: $strPrice)
+                    OutcomeForm(newExpense: $newExpense, strPrice: $strPrice)
                 } else {
-                    IncomeForm(strIncome: $strIncome)
+                    IncomeForm(newIncome: $newIncome, strIncome: $strIncome)
                 }
             }
             .toolbar {
