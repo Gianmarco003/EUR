@@ -11,13 +11,13 @@ struct PrincepsView: View {
     
     var body: some View {
         TabView {
-            SummaryView(selectedYear: Date().get(.year))
+            SummaryView()
                 .tabItem{
                     Label("Summary", systemImage: "list.bullet.rectangle")
                 }
-            DefermentView()
+            IncomeView()
                 .tabItem{
-                    Label("Deferment", systemImage: "person.2.fill")
+                    Label("Incomes", systemImage: "banknote")
                 }
             AccountView()
                 .tabItem {
