@@ -9,9 +9,7 @@ import SwiftUI
 
 struct IncomeForm: View {
     
-    @State var newIncome: Income = Income(description: "",
-                                          income: 0,
-                                          date: Date())
+    @Binding var newIncome: Income
     @Binding var strIncome: String
     @StateObject var AppStorage = PermanentStorage()
     
@@ -24,11 +22,12 @@ struct IncomeForm: View {
                 DatePicker("Date", selection: $newIncome.date, displayedComponents: .date)
             }
         }
+        .navigationTitle("New income")
     }
 }
 
 struct NewIncomeFormView_Previews: PreviewProvider {
     static var previews: some View {
-        IncomeForm(strIncome: .constant(""))
+        IncomeForm(newIncome: .constant(MockData.sampleIncome), strIncome: .constant(""))
     }
 }
