@@ -29,6 +29,8 @@ final class PermanentStorage: ObservableObject{
             categoriesStorage.append(NewCategory)
             categoriesStorage.sort()
         }
+        categoriesStorage.remove(at: categoriesStorage.firstIndex(of: "None")!)
+        categoriesStorage.insert("None", at: 0)
     }
     
     func deleteExpense(at offsets: IndexSet) {
@@ -43,6 +45,9 @@ final class PermanentStorage: ObservableObject{
         categoriesStorage.remove(atOffsets: offsets)
         if categoriesStorage.isEmpty {
             categoriesStorage = ["None"]
+        }
+        if !categoriesStorage.contains("None") {
+            addCategory(NewCategory: "None")
         }
     }
     
