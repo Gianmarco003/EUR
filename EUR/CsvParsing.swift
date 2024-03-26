@@ -41,3 +41,14 @@ func CSVParsing (CSV: String) -> [ColumnsName] {
     
     return CSVToStruct
 }
+
+func read(from url: URL) -> Result<String,Error> {
+  let accessing = url.startAccessingSecurityScopedResource()
+  defer {
+    if accessing {
+      url.stopAccessingSecurityScopedResource()
+    }
+  }
+
+  return Result { try String(contentsOf: url) }
+}
