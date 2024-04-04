@@ -1,14 +1,15 @@
 //
-//  DetailExpenseView.swift
+//  DetailIncomeView.swift
 //  EUR
 //
-//  Created by Gianmarco on 14/03/24.
+//  Created by Gianmarco on 21/03/24.
 //
 
 import SwiftUI
 
-struct DetailExpenseView: View {
-    let expense: Expense
+struct DetailIncomeView: View {
+    
+    let income: Income
     
     var body: some View {
         VStack {
@@ -16,21 +17,18 @@ struct DetailExpenseView: View {
                 Image(systemName: "eurosign.circle.fill")
                     .resizable()
                     .frame(width: 100, height: 100)
-                    .foregroundColor(.red)
-                Text("\(expense.price, specifier: "%.2f")€")
+                    .foregroundColor(.accent)
+                Text("\(income.income, specifier: "%.2f")€")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
             }
             .padding()
             VStack {
-                Text(expense.description)
+                Text(income.description)
                     .font(.title)
                     .fontWeight(.semibold)
-                Text("\(expense.date.formatted(date: .abbreviated, time: .omitted))")
+                Text("\(income.date.formatted(date: .abbreviated, time: .omitted))")
                     .font(.title2)
-                    .foregroundColor(.secondary)
-                Text(expense.category)
-                    .font(.title3)
                     .foregroundColor(.secondary)
             }
             .padding()
@@ -39,8 +37,8 @@ struct DetailExpenseView: View {
     }
 }
 
-struct DetailExpenseView_Previews: PreviewProvider {
+struct DetailIncomeView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailExpenseView(expense: MockData.sampleExpense)
+        DetailIncomeView(income: MockData.sampleIncome)
     }
 }

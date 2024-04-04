@@ -15,4 +15,10 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
+    
+    static func from(year: Int, month: Int, day: Int)
+    -> Date {
+        let components = DateComponents(year: year, month: month, day: day)
+    return Calendar.current.date(from: components)!
+    }
 }

@@ -16,7 +16,7 @@ struct CompactIncomeView: View {
             Image(systemName: "eurosign.circle.fill")
                 .resizable()
                 .frame(width: 50, height: 50)
-                .foregroundColor(.green)
+                .foregroundColor(.accent)
             VStack(alignment: .leading) {
                 Text(income.description)
                     .font(.body)

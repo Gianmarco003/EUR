@@ -10,9 +10,9 @@ import SwiftUI
 struct ChangeYearView: View {
     
     @Binding var isPresentedChangeYear: Bool
-    @Binding var selectedYear: Int
+    @Binding var year: Int
     @State var selectedYearList = Date().get(.year)
-    
+
     var body: some View {
         NavigationView() {
             List {
@@ -33,7 +33,7 @@ struct ChangeYearView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        selectedYear = selectedYearList
+                        year = selectedYearList
                         isPresentedChangeYear.toggle()
                     } label: {
                         Text("Done")
@@ -46,6 +46,6 @@ struct ChangeYearView: View {
 
 struct ChangeYearView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangeYearView(isPresentedChangeYear: .constant(true), selectedYear: .constant(2024))
+        ChangeYearView(isPresentedChangeYear: .constant(true), year: .constant(2024))
     }
 }

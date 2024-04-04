@@ -15,13 +15,12 @@ struct CompactExpenseView: View {
         HStack() {
             Image(systemName: "eurosign.circle.fill")
                 .resizable()
-                .frame(width: 50, height: 50)
+                .frame(width: 40, height: 40)
                 .foregroundColor(.red)
             VStack(alignment: .leading) {
                 Text(expense.description)
                     .font(.body)
                     .fontWeight(.semibold)
-                Text(expense.category)
                 Text("\(expense.date.formatted(date: .abbreviated, time: .omitted))")
                     .font(.callout)
             }
@@ -31,6 +30,7 @@ struct CompactExpenseView: View {
                     .font(.title3)
                 .fontWeight(.semibold)
         }
+        .foregroundStyle(.foreground)
     }
 }
 

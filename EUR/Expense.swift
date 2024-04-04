@@ -22,6 +22,18 @@ struct Income: Identifiable, Codable {
     var date: Date
 }
 
+struct BarChartElement: Identifiable {
+    var id = UUID()
+    var x: Date
+    var y: Double
+}
+
+struct PieChartElement: Identifiable, Hashable {
+    var id = UUID()
+    var name: String
+    var value: Double
+}
+
 struct MockData {
     static var sampleExpense = Expense(description: "description",
                                        price: 23.5,
