@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailExpenseView: View {
     
+    @StateObject var AppStorage = PermanentStorage()
     @Binding var expense: Expense
     @State var isPresentEditForm = false
     

@@ -19,13 +19,13 @@ struct MonthSummaryCompactView: View {
                 Text(getMonthName(Month: month))
                     .font(.title)
                     .fontWeight(.semibold)
-                Text("+\(AppStorage.getTotalIncomesByMonth(Month: month, Year: year), specifier: "%.2f")")
-                Text("\(AppStorage.getTotalExpensesByMonth(Month: month, Year: year), specifier: "%.2f")")
+                Text("+\(AppStorage.getTotalIncomesByMonth(Month: month, Year: year), specifier: "%.2f")€")
+                Text("\(AppStorage.getTotalExpensesByMonth(Month: month, Year: year), specifier: "%.2f")€")
             }
             Spacer()
             VStack (alignment: .trailing)
             {
-                Text("\(AppStorage.getTotalByMonth(Month: month, Year: year), specifier: "%.2f")")
+                Text("\(AppStorage.getTotalByMonth(Month: month, Year: year), specifier: "%.2f")€")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(AppStorage.getTotalByMonth(Month: month, Year: year).isLess(than: 0) ? .red : .accent)

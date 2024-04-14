@@ -23,7 +23,7 @@ struct NewMovementFormView: View {
                                              category: "None")
     
     var body: some View {
-        NavigationStack() {
+        NavigationView() {
             VStack {
                 if NewMovementType {
                     OutcomeForm(newExpense: $newExpense, strPrice: $strPrice)

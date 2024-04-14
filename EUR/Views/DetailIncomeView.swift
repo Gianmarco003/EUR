@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailIncomeView: View {
     
+    @StateObject var AppStorage = PermanentStorage()
     let income: Income
     
     var body: some View {

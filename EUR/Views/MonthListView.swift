@@ -14,7 +14,7 @@ struct MonthListView: View {
     var year: Int
     var month: Int
     @State var isPresentedForm: Bool = false
-
+    
     var body: some View {
         List {
             if !AppStorage.getIncomesByMonth (
@@ -31,7 +31,11 @@ struct MonthListView: View {
                             CompactIncomeView(income: income)
                         }
                     }
-                    .onDelete (perform: AppStorage.deleteIncome)
+                    .onDelete(perform: { indexSet in
+                        for index in indexSet{
+                            AppStorage.deleteIncomeOnDelete(index: index, year: year, month: month)
+                        }
+                    })
                 }
             }
             if !AppStorage.getExpensesByMonth (
@@ -48,7 +52,11 @@ struct MonthListView: View {
                             CompactExpenseView(expense: expense)
                         }
                     }
-                    .onDelete (perform: AppStorage.deleteExpense)
+                    .onDelete(perform: { indexSet in
+                        for index in indexSet{
+                            AppStorage.deleteExpenseOnDelete(index: index, year: year, month: month)
+                        }
+                    })
                 }
             }
         }
@@ -58,7 +66,7 @@ struct MonthListView: View {
                 Button {
                     isPresentedForm.toggle()
                 } label: {
-                    Text("Add movement")
+                    Image(systemName: "plus.circle.fill")
                 }
             }
         }
@@ -69,5 +77,5 @@ struct MonthListView: View {
 }
 
 #Preview {
-    MonthListView(year: 2024, month: 1)
+    MonthListView(year: 2024, month: 3)
 }

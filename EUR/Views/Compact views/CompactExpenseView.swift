@@ -13,21 +13,22 @@ struct CompactExpenseView: View {
     
     var body: some View {
         HStack() {
-            Image(systemName: "eurosign.circle.fill")
-                .resizable()
-                .frame(width: 40, height: 40)
-                .foregroundColor(.red)
+//            Image(systemName: "minus.circle.fill")
+//                .resizable()
+//                .frame(width: 40, height: 40)
+//                .foregroundColor(.red)
             VStack(alignment: .leading) {
                 Text(expense.description)
-                    .font(.body)
+                    .font(.headline)
                     .fontWeight(.semibold)
+                Text(expense.category)
+                    .font(.callout)
                 Text("\(expense.date.formatted(date: .abbreviated, time: .omitted))")
                     .font(.callout)
             }
-            .padding(.leading, 10)
             Spacer()
-                Text("\(expense.price, specifier: "%.2f")€")
-                    .font(.title3)
+            Text("\(expense.price, specifier: "%.2f")€")
+                .font(.title2)
                 .fontWeight(.semibold)
         }
         .foregroundStyle(.foreground)

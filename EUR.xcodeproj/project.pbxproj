@@ -33,6 +33,8 @@
 		1BDFF4B02BACABAE00D14212 /* IncomeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF4AF2BACABAE00D14212 /* IncomeForm.swift */; };
 		1BDFF4B22BACAE5200D14212 /* CompactIncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF4B12BACAE5200D14212 /* CompactIncomeView.swift */; };
 		1BDFF4B42BACB25200D14212 /* DetailIncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF4B32BACB25200D14212 /* DetailIncomeView.swift */; };
+		1BF586E72BCABBD60028E41E /* PieChartCompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF586E62BCABBD60028E41E /* PieChartCompactView.swift */; };
+		1BF586E92BCAC12B0028E41E /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF586E82BCAC12B0028E41E /* CategoriesView.swift */; };
 		1BFD94202BBAE85600D71C3D /* AddCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD941F2BBAE85600D71C3D /* AddCategory.swift */; };
 		1BFF2DA12BAEDD7500C5F529 /* OutcomeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF2DA02BAEDD7500C5F529 /* OutcomeForm.swift */; };
 		1BFF2DA32BAEEA6800C5F529 /* MonthSummaryCompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF2DA22BAEEA6800C5F529 /* MonthSummaryCompactView.swift */; };
@@ -67,6 +69,8 @@
 		1BDFF4AF2BACABAE00D14212 /* IncomeForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeForm.swift; sourceTree = "<group>"; };
 		1BDFF4B12BACAE5200D14212 /* CompactIncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactIncomeView.swift; sourceTree = "<group>"; };
 		1BDFF4B32BACB25200D14212 /* DetailIncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailIncomeView.swift; sourceTree = "<group>"; };
+		1BF586E62BCABBD60028E41E /* PieChartCompactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCompactView.swift; sourceTree = "<group>"; };
+		1BF586E82BCAC12B0028E41E /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		1BFD941F2BBAE85600D71C3D /* AddCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategory.swift; sourceTree = "<group>"; };
 		1BFF2DA02BAEDD7500C5F529 /* OutcomeForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeForm.swift; sourceTree = "<group>"; };
 		1BFF2DA22BAEEA6800C5F529 /* MonthSummaryCompactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryCompactView.swift; sourceTree = "<group>"; };
@@ -131,9 +135,9 @@
 		1BDCAC3F2BB5900100AEDF4E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1B0714A42B9253D4000AA610 /* SummaryView.swift */,
 				1BDCAC402BB5902900AEDF4E /* Compact views */,
 				1B0714A22B925394000AA610 /* NewMovementFormView.swift */,
-				1B0714A42B9253D4000AA610 /* SummaryView.swift */,
 				1B2D0ED02B91005C00BB4F73 /* PrincepsView.swift */,
 				1BC128122B9D4F8F0088BC26 /* ChangeYearView.swift */,
 				1B43E4542BA31C460016AB7F /* DetailExpenseView.swift */,
@@ -147,6 +151,7 @@
 				1BFD941F2BBAE85600D71C3D /* AddCategory.swift */,
 				1B2A15CA2BBC1A470068EDED /* AccountView.swift */,
 				1B83C9752BBC631600CB20EE /* EditOutcomeView.swift */,
+				1BF586E82BCAC12B0028E41E /* CategoriesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			children = (
 				1BDFF4B12BACAE5200D14212 /* CompactIncomeView.swift */,
 				1B2D0EE42B9108CE00BB4F73 /* CompactExpenseView.swift */,
+				1BF586E62BCABBD60028E41E /* PieChartCompactView.swift */,
 			);
 			path = "Compact views";
 			sourceTree = "<group>";
@@ -239,6 +245,8 @@
 				1B66A1332BA4C3FC005D2538 /* DevView.swift in Sources */,
 				1B0714A52B9253D4000AA610 /* SummaryView.swift in Sources */,
 				1B43E4552BA31C460016AB7F /* DetailExpenseView.swift in Sources */,
+				1BF586E72BCABBD60028E41E /* PieChartCompactView.swift in Sources */,
+				1BF586E92BCAC12B0028E41E /* CategoriesView.swift in Sources */,
 				1B2D0ED12B91005C00BB4F73 /* PrincepsView.swift in Sources */,
 				1B0714A32B925394000AA610 /* NewMovementFormView.swift in Sources */,
 				1BC1280F2B9D40390088BC26 /* CalendarElements.swift in Sources */,

@@ -13,10 +13,10 @@ struct CompactIncomeView: View {
     
     var body: some View {
         HStack() {
-            Image(systemName: "eurosign.circle.fill")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.accent)
+//            Image(systemName: "eurosign.circle.fill")
+//                .resizable()
+//                .frame(width: 50, height: 50)
+//                .foregroundColor(.accent)
             VStack(alignment: .leading) {
                 Text(income.description)
                     .font(.body)
@@ -24,7 +24,6 @@ struct CompactIncomeView: View {
                 Text("\(income.date.formatted(date: .abbreviated, time: .omitted))")
                     .font(.callout)
             }
-            .padding(.leading, 10)
             Spacer()
                 Text("\(income.income, specifier: "%.2f")€")
                     .font(.title3)

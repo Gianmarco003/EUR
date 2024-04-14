@@ -33,7 +33,7 @@ struct OutcomesIncomesView: View {
                     Button {
                         isPresentedForm.toggle()
                     } label: {
-                        Text("Add movement")
+                        Image(systemName: "plus.circle.fill")
                     }
                 }
             }
