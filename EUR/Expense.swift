@@ -28,9 +28,10 @@ struct BarChartElement: Identifiable {
     var y: Double
 }
 
-struct PieChartElement: Identifiable, Hashable {
+struct Category: Identifiable, Hashable {
     var id = UUID()
     var name: String
+    var fullname: String
     var value: Double
 }
 

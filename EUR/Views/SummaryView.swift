@@ -13,6 +13,7 @@ struct SummaryView: View {
     @StateObject var AppStorage = PermanentStorage()
     @State var year: Int
     @State var isPresentedForm: Bool = false
+    @State var isPresentedChangeYearForm: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -21,14 +22,59 @@ struct SummaryView: View {
                     NavigationLink(destination: OutcomesIncomesView(year: year)) {
                         YearSummaryCompactView(year: year)
                     }
-                    NavigationLink(destination: MonthListView(year: year, month: Date().get(.month))) {
-                        MonthSummaryCompactView(month: Date().get(.month), year: Date().get(.year))
+                    if year == Date().get(.year) {
+                        NavigationLink(destination: MonthListView(year: year, month: Date().get(.month))) {
+                            MonthSummaryCompactView(month: Date().get(.month), year: Date().get(.year))
+                        }
                     }
                 }
-                Section {
-                    
+                Section("Categorie") {
+                    NavigationLink(destination: CategoriesView(year: year)) {
+                        PieChartCompactView(year: year)
+                    }
                 }
-                ChartsView(year: $year)
+                Section("Incomes vs outcomes") {
+                    VStack {
+                        VStack{
+                            Text("Incomes")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Chart {
+                                ForEach(AppStorage.chartBarMarkIncomesByMonth(year: year)) { month in
+                                    BarMark(
+                                        x: .value("Month", month.x, unit: .month),
+                                        y: .value("Value", month.y)
+                                    )
+                                    .foregroundStyle(Color(.accent))
+                                }
+                            }
+                            .frame(height: 100)
+                            .padding()
+                        }
+                        VStack {
+                            Text("Outcomes")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Chart {
+                                ForEach(AppStorage.chartBarMarkExpensesByMonth(year: year)) { month in
+                                    BarMark(
+                                        x: .value("Month", month.x, unit: .month),
+                                        y: .value("Value", month.y)
+                                    )
+                                    .foregroundStyle(Color(.red))
+                                }
+                            }
+                            .frame(height: 100)
+                            .padding()
+                        }
+                    }
+                }
+            }
+            .sheet(isPresented: $isPresentedForm) {
+                NewMovementFormView(isPresentedForm: $isPresentedForm)
+            }
+            .sheet(isPresented: $isPresentedChangeYearForm) {
+                ChangeYearView(isPresentedChangeYear: $isPresentedChangeYearForm, year: $year)
             }
             .navigationTitle("Riepilogo")
             .toolbar {
@@ -36,27 +82,16 @@ struct SummaryView: View {
                     Button {
                         isPresentedForm.toggle()
                     } label: {
-                        Text("Add movement")
+                        Image(systemName: "plus.circle.fill")
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        if year == 2024 {
-                            year = 2023
-                        } else {
-                            year = 2024
-                        }
+                        isPresentedChangeYearForm.toggle()
                     } label: {
-                        if year == 2024 {
-                            Text("2024")
-                        } else {
-                            Text("2023")
-                        }
+                        Text(String(year))
                     }
                 }
-            }
-            .sheet(isPresented: $isPresentedForm) {
-                NewMovementFormView(isPresentedForm: $isPresentedForm)
             }
         }
     }
