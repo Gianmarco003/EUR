@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct ColumnsName {
+    var description = ""
+    var price = ""
     var date = ""
     var category = ""
-    var price = ""
-    var description = ""
-   
+    
+
     //EUR
+    init(raw: [String]) {
+        description = raw[0]
+        price = raw[1]
+        date = raw[2]
+        category = raw[3]
+    }
+    
+    //SPENDEE
 //    init(raw: [String]) {
 //        description = raw[0]
 //        price = raw[1]
 //        date = raw[2]
 //        category = raw[3]
 //    }
-    
-    //SPENDEE
-    init(raw: [String]) {
-        date = raw[0]
-        category = raw[1]
-        price = raw[2]
-        description = raw[3]
-    }
 }
 
 func CSVParsing (CSV: String) -> [ColumnsName] {
@@ -43,7 +44,7 @@ func CSVParsing (CSV: String) -> [ColumnsName] {
     
     //now loop around each row and split into columns
     for row in rows {
-        let CSVColumns = row.description.components(separatedBy: ",")
+        let CSVColumns = row.description.components(separatedBy: ";")
         let CSVStruct = ColumnsName.init(raw: CSVColumns)
         CSVToStruct.append(CSVStruct)
     }

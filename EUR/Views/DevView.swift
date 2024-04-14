@@ -15,6 +15,7 @@ struct DevView: View {
     @State private var exporting = false
     @StateObject var AppStorage = PermanentStorage()
     @State var text = ""
+    @State var avanzate = false
     
     var body: some View {
         List {
@@ -37,14 +38,14 @@ struct DevView: View {
                     
                     let FILE = CSVParsing(CSV: text)
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd/MM/yyyy"
+                    dateFormatter.dateFormat = "MM/dd/yy"
                     for row in FILE {
                         if !AppStorage.getCategories().contains(row.category) {
                             AppStorage.addCategory(NewCategory: row.category)
                         }
                         var price = row.price.replacingOccurrences(of: ",", with: ".")
                         price = price.replacingOccurrences(of: "€", with: "")
-//                        price = price.replacingOccurrences(of: " ", with: "")
+                        price = price.trimmingCharacters(in: .whitespaces)
                         AppStorage.addExpense(Expense(description: row.description,
                                                       price: Double(price)!,
                                                       date: dateFormatter.date(from: row.date)!,
@@ -57,19 +58,33 @@ struct DevView: View {
                     print("Error while importing!")
                 }
             }
-//            Button("Export") {
-//                exporting = true
-//            }
-//            .fileExporter(isPresented: $exporting, documents: <#T##Collection#>, contentType: .commaSeparatedText)
-            Button {
-                AppStorage.deleteCategories()
-            } label: {
-                Text("Delete categories")
+            Button("Export") {
+                exporting.toggle()
             }
-            Button {
-                AppStorage.deleteAllExpenses()
-            } label: {
-                Text("Delete expenses")
+            .fileExporter(isPresented: $exporting,
+                          document: AppStorage.exportExpenses(),
+                          contentType: .commaSeparatedText,
+                          defaultFilename: "CSVExpenses.csv") {
+                result in
+                switch result {
+                case .success(let url):
+                    print("Saved to \(url)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            Toggle("Avanzate", isOn: $avanzate)
+            if avanzate {
+                Button {
+                    AppStorage.deleteCategories()
+                } label: {
+                    Text("Delete categories")
+                }
+                Button {
+                    AppStorage.deleteAllMovements()
+                } label: {
+                    Text("Delete movements")
+                }
             }
         }
     }
