@@ -9,18 +9,20 @@ import SwiftUI
 
 struct ChangeYearView: View {
     
+    @StateObject var AppStorage = PermanentStorage()
     @Binding var isPresentedChangeYear: Bool
     @Binding var year: Int
     @State var selectedYearList = Date().get(.year)
 
     var body: some View {
         NavigationView() {
-            List {
-                Picker("Year", selection: $selectedYearList) {
-                        Text("2024").tag(2024)
-                        Text("2023").tag(2023)
-                        Text("2022").tag(2022)
-                    }
+            List(AppStorage.getFirstYear()...Date().get(.year), id: \.self) {newYear in
+                Button {
+                    year = newYear
+                    isPresentedChangeYear.toggle()
+                } label: {
+                    Text(String(newYear))
+                }
             }
             .navigationTitle("Select year")
             .toolbar {
@@ -29,14 +31,6 @@ struct ChangeYearView: View {
                         isPresentedChangeYear.toggle()
                     } label: {
                         Text("Back")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        year = selectedYearList
-                        isPresentedChangeYear.toggle()
-                    } label: {
-                        Text("Done")
                     }
                 }
             }
