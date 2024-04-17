@@ -16,13 +16,13 @@ struct IncomeForm: View {
     var body: some View {
         Form {
             Section {
-                TextField("Description", text: $newIncome.description)
-                TextField("Import", text: $strIncome)
+                TextField("Descrizione", text: $newIncome.description)
+                TextField("Importo", text: $strIncome)
                     .keyboardType(.decimalPad)
-                DatePicker("Date", selection: $newIncome.date, displayedComponents: .date)
+                DatePicker("Data", selection: $newIncome.date, displayedComponents: .date)
             }
         }
-        .navigationTitle("New income")
+        .navigationTitle("Nuova entrata")
     }
 }
 

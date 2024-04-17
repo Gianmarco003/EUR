@@ -15,7 +15,7 @@ struct ChangeYearView: View {
     @State var selectedYearList = Date().get(.year)
 
     var body: some View {
-        NavigationView() {
+        NavigationStack() {
             List(AppStorage.getFirstYear()...Date().get(.year), id: \.self) {newYear in
                 Button {
                     year = newYear
@@ -24,13 +24,13 @@ struct ChangeYearView: View {
                     Text(String(newYear))
                 }
             }
-            .navigationTitle("Select year")
+            .navigationTitle("Seleziona un anno")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         isPresentedChangeYear.toggle()
                     } label: {
-                        Text("Back")
+                        Text("Indietro")
                     }
                 }
             }

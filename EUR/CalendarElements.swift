@@ -10,29 +10,29 @@ import SwiftUI
 func getMonthName (Month: Int) -> String {
     switch Month {
     case 1:
-        return "January"
+        return "Gennaio"
     case 2:
-        return "February"
+        return "Febbraio"
     case 3:
-        return "March"
+        return "Marzo"
     case 4:
-        return "April"
+        return "Aprile"
     case 5:
-        return "May"
+        return "Maggio"
     case 6:
-        return "June"
+        return "Giugno"
     case 7:
-        return "July"
+        return "Luglio"
     case 8:
-        return "August"
+        return "Agosto"
     case 9:
-        return "September"
+        return "Settembre"
     case 10:
-        return "October"
+        return "Ottobre"
     case 11:
-        return "November"
+        return "Novembre"
     case 12:
-        return "December"
+        return "Dicembre"
     default:
         return "None"
     }
@@ -40,44 +40,44 @@ func getMonthName (Month: Int) -> String {
 
 func getMonthNumber (Month: String) -> Int {
     switch Month {
-    case "January":
+    case "Gennaio":
         return 1
-    case "February":
+    case "Febbraio":
         return 2
-    case "March":
+    case "Marzo":
         return 3
-    case "April":
+    case "Aprile":
         return 4
-    case "May":
+    case "Maggio":
         return 5
-    case "June":
+    case "Giugno":
         return 6
-    case "July":
+    case "Luglio":
         return 7
-    case "August":
+    case "Agosto":
         return 8
-    case "September":
+    case "Settembre":
         return 9
-    case "October":
+    case "Ottobre":
         return 10
-    case "November":
+    case "Novembre":
         return 11
-    case "December":
+    case "Dicembre":
         return 12
     default:
         return 0
     }
 }
 
-public let months = ["January",
-                     "February",
-                     "March",
-                     "April",
-                     "May",
-                     "June",
-                     "July",
-                     "August",
-                     "September",
-                     "October",
-                     "November",
-                     "December"]
+public let months = ["Gennaio",
+                     "Febbraio",
+                     "Marzo",
+                     "Aprile",
+                     "Maggio",
+                     "Giugno",
+                     "Luglio",
+                     "Agosto",
+                     "Settembre",
+                     "Ottobre",
+                     "Novembre",
+                     "Dicembre"]

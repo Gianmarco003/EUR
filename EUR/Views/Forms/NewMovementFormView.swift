@@ -36,14 +36,14 @@ struct NewMovementFormView: View {
                     Button {
                         isPresentedForm.toggle()
                     } label: {
-                        Text("Cancel")
+                        Text("Annulla")
                             .fontWeight(.semibold)
                     }
                 }
                 ToolbarItem(placement: .principal) {
-                    Picker("New movement", selection: $NewMovementType) {
-                        Text("Outcome").tag(true)
-                        Text("Income").tag(false)
+                    Picker("Nuovo movimento", selection: $NewMovementType) {
+                        Text("Uscita").tag(true)
+                        Text("Entrata").tag(false)
                     }
                     .pickerStyle(.segmented)
                 }
@@ -55,7 +55,7 @@ struct NewMovementFormView: View {
                             AppStorage.addExpense(newExpense)
                             isPresentedForm.toggle()
                         } label: {
-                            Text("Add")
+                            Text("Aggiungi")
                                 .fontWeight(.semibold)
                         }
                     } else {
@@ -65,7 +65,7 @@ struct NewMovementFormView: View {
                             AppStorage.addIncome(newIncome)
                             isPresentedForm.toggle()
                         } label: {
-                            Text("Add")
+                            Text("Aggiungi")
                                 .fontWeight(.semibold)
                         }
                     }

@@ -39,7 +39,7 @@ struct MockData {
     static var sampleExpense = Expense(description: "description",
                                        price: 23.5,
                                        date: Date(),
-                                       category: "Nessuna")
+                                       category: "")
     static var sampleIncome = Income(description: "description",
                                        income: 5000,
                                        date: Date())

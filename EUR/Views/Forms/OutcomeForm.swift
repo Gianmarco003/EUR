@@ -16,18 +16,18 @@ struct OutcomeForm: View {
     var body: some View {
         Form {
             Section {
-                TextField("Description", text: $newExpense.description)
-                Picker("Category", selection: $newExpense.category) {
+                TextField("Descrizione", text: $newExpense.description)
+                Picker("Categoria", selection: $newExpense.category) {
                     ForEach(AppStorage.getCategories(), id: \.self) { category in
                         Text(category)
                     }
                 }
-                TextField("Amount", text: $strPrice)
+                TextField("Importo", text: $strPrice)
                     .keyboardType(.decimalPad)
-                DatePicker("Date", selection: $newExpense.date, displayedComponents: .date)
+                DatePicker("Data", selection: $newExpense.date, displayedComponents: .date)
             }
         }
-        .navigationTitle("New outcome")
+        .navigationTitle("Nuova spesa")
     }
 }
 

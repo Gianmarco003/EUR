@@ -20,7 +20,7 @@ struct MonthListView: View {
             if !AppStorage.getIncomesByMonth (
                 Month: month,
                 Year: year).isEmpty {
-                Section("Incomes") {
+                Section("Entrate") {
                     ForEach(AppStorage.getIncomesByMonth(
                         Month: month,
                         Year: year))
@@ -41,7 +41,7 @@ struct MonthListView: View {
             if !AppStorage.getExpensesByMonth (
                 Month: month,
                 Year: year).isEmpty {
-                Section("Expenses") {
+                Section("Uscite") {
                     ForEach(AppStorage.getExpensesByMonth(
                         Month: month,
                         Year: year))

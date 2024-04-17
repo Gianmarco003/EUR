@@ -44,7 +44,7 @@ func CSVParsing (CSV: String) -> [ColumnsName] {
     
     //now loop around each row and split into columns
     for row in rows {
-        let CSVColumns = row.description.components(separatedBy: ";")
+        let CSVColumns = row.description.components(separatedBy: ",")
         let CSVStruct = ColumnsName.init(raw: CSVColumns)
         CSVToStruct.append(CSVStruct)
     }

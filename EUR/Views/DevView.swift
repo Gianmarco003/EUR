@@ -19,7 +19,7 @@ struct DevView: View {
     
     var body: some View {
         List {
-            Button("Import") {
+            Button("Importa spese") {
                 importing = true
             }
             .fileImporter(
@@ -38,7 +38,7 @@ struct DevView: View {
                     
                     let FILE = CSVParsing(CSV: text)
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yy"
+                    dateFormatter.dateFormat = "dd/MM/yyyy"
                     for row in FILE {
                         if !AppStorage.getCategories().contains(row.category) {
                             AppStorage.addCategory(NewCategory: row.category)
@@ -58,7 +58,7 @@ struct DevView: View {
                     print("Error while importing!")
                 }
             }
-            Button("Export") {
+            Button("Esporta spese") {
                 exporting.toggle()
             }
             .fileExporter(isPresented: $exporting,
@@ -78,12 +78,12 @@ struct DevView: View {
                 Button {
                     AppStorage.deleteCategories()
                 } label: {
-                    Text("Delete categories")
+                    Text("Cancella categorie")
                 }
                 Button {
                     AppStorage.deleteAllMovements()
                 } label: {
-                    Text("Delete movements")
+                    Text("Cancella movimenti")
                 }
             }
         }

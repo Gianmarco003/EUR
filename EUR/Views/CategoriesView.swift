@@ -15,23 +15,24 @@ struct CategoriesView: View {
     
     var body: some View {
         List {
-            Section {
-                Chart(AppStorage.chartCategories(year: year), id: \.name) { categoria in
-                    SectorMark(angle: .value("categoria", categoria.value),
-                               angularInset: 1.5)
-                    .cornerRadius(2)
-                    .foregroundStyle(by: .value("Categoria", categoria.name))
-                }
-                .chartLegend(.hidden)
-                .frame(height: 200)
+            Chart(AppStorage.chartCategories(year: year), id: \.name) { categoria in
+                SectorMark(angle: .value("categoria", categoria.value),
+                           angularInset: 1.5)
+                .cornerRadius(2)
+                .foregroundStyle(by: .value("Categoria", categoria.name))
             }
-            Section ("Tutte le categorie") {
-                ForEach (AppStorage.getFullCategories(year: year), id: \.self) { category in
-                    HStack {
-                        Text(category.name)
-                        Spacer()
-                        Text("\(category.value, specifier: "%.2f")%")
-                            .font(.title3)
+            .chartLegend(.hidden)
+            .frame(height: 200)
+            .padding()
+            ForEach (AppStorage.getFullCategories(year: year), id: \.self) { category in
+                if category.value > 0 {
+                NavigationLink(destination: CategoryDetailView(category: category.name, year: year)) {
+                        HStack {
+                            Text(category.name)
+                            Spacer()
+                            Text("\(category.value, specifier: "%.2f")%")
+                                .font(.title3)
+                        }
                     }
                 }
             }

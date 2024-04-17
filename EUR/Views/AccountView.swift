@@ -15,18 +15,18 @@ struct AccountView: View {
     var body: some View {
         NavigationStack {
             List{
-                NavigationLink("Categories") {
+                NavigationLink("Categorie") {
                     List {
-                        Section("New category") {
+                        Section("Nuova categoria") {
                             TextField("Nome", text: $nomeCategoria)
                             Button {
                                 AppStorage.addCategory(NewCategory: nomeCategoria)
                                 nomeCategoria = ""
                             } label: {
-                                Text("Add category")
+                                Text("Aggiungi")
                             }
                         }
-                        Section("All categories") {
+                        Section("Tutte le categorie") {
                             ForEach(AppStorage.getCategories(), id: \.self)
                             { category in
                                 Text(category)
@@ -34,14 +34,14 @@ struct AccountView: View {
                             .onDelete (perform: AppStorage.deleteCategory)
                         }
                     }
-                    .navigationTitle("Categories")
+                    .navigationTitle("Categorie")
                 }
                 NavigationLink("Sviluppatore") {
                     DevView()
-                        .navigationTitle("Stuff")
+                        .navigationTitle("Avanzate")
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("Impostazioni")
         }
     }
 }

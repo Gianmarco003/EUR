@@ -33,17 +33,17 @@ struct SummaryView: View {
                         PieChartCompactView(year: year)
                     }
                 }
-                Section("Incomes vs outcomes") {
+                Section("Evntrate vs Uscite") {
                     VStack {
                         VStack{
-                            Text("Incomes")
+                            Text("Entrate")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                             Chart {
                                 ForEach(AppStorage.chartBarMarkIncomesByMonth(year: year)) { month in
                                     BarMark(
-                                        x: .value("Month", month.x, unit: .month),
-                                        y: .value("Value", month.y)
+                                        x: .value("Mese", month.x, unit: .month),
+                                        y: .value("Entrate", month.y)
                                     )
                                     .foregroundStyle(Color(.accent))
                                 }
@@ -52,14 +52,14 @@ struct SummaryView: View {
                             .padding()
                         }
                         VStack {
-                            Text("Outcomes")
+                            Text("Uscite")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                             Chart {
                                 ForEach(AppStorage.chartBarMarkExpensesByMonth(year: year)) { month in
                                     BarMark(
-                                        x: .value("Month", month.x, unit: .month),
-                                        y: .value("Value", month.y)
+                                        x: .value("Mese", month.x, unit: .month),
+                                        y: .value("Uscite", month.y)
                                     )
                                     .foregroundStyle(Color(.red))
                                 }

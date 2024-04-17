@@ -26,14 +26,14 @@ struct EditOutcomeView: View {
                             AppStorage.editOutcome(oldOutcome: oldExpense, newOutcome: newExpense)
                             isPresentEditForm.toggle()
                         } label: {
-                            Text("Save")
+                            Text("Salva")
                         }
                     }
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
                             isPresentEditForm.toggle()
                         } label: {
-                            Text("Cancel")
+                            Text("Annulla")
                         }
                     }
                 }
