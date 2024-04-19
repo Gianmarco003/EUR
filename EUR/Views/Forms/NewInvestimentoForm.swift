@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct NewInvestimentoForm: View {
+    
+    @StateObject var AppStorage = PermanentStorage()
+    @Binding var newInvestimento: Investimento
+    @Binding var strValore: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section {
+                TextField("Investimento", text: $newInvestimento.description)
+                TextField("Valore", text: $strValore)
+                    .keyboardType(.decimalPad)
+                DatePicker("Data", selection: $newInvestimento.date, displayedComponents: .date)
+            }
+        }
+        .navigationTitle("Snapshot")
     }
 }
 
 #Preview {
-    NewInvestimentoForm()
+    NewInvestimentoForm(newInvestimento: .constant(Investimento(description: "Alleanza", valore: 999, date: Date())), strValore: .constant("999"))
 }

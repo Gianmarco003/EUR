@@ -7,10 +7,12 @@
 
 import SwiftUI
 import Charts
+import WidgetKit
 
 struct SummaryView: View {
     
     @StateObject var AppStorage = PermanentStorage()
+    @State private var wheatherTunnel = UserDefaults.standard.integer(forKey: "WheatherTunnel")
     @State var year: Int
     @State var isPresentedForm: Bool = false
     @State var isPresentedChangeYearForm: Bool = false
@@ -93,6 +95,14 @@ struct SummaryView: View {
                     }
                 }
             }
+            .onAppear(perform: {
+                let userDefaults = UserDefaults(suiteName: "group.WidgetTunnel")
+//                let widgetData: WidgetData = WidgetData(totalByMonth: AppStorage.getTotalByMonth(Month: Date().get(.month), Year: Date().get(.year)), deltaByMonth: AppStorage.deltaByMonth(month: Date().get(.month), year: Date().get(.year)))
+                
+                let widgetData = [AppStorage.getTotalByMonth(Month: Date().get(.month), Year: Date().get(.year)),AppStorage.deltaByMonth(month: Date().get(.month), year: Date().get(.year))]
+                userDefaults!.setValue(widgetData, forKey: "WidgetTunnel")
+                WidgetCenter.shared.reloadAllTimelines()
+            })
         }
     }
 }

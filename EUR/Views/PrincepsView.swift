@@ -15,6 +15,10 @@ struct PrincepsView: View {
                 .tabItem{
                     Label("Riepilogo", systemImage: "list.bullet.rectangle")
                 }
+            InvestimentiView()
+                .tabItem {
+                    Label("Investimenti", systemImage: "chart.xyaxis.line")
+                }
             AccountView()
                 .tabItem {
                     Label("Impostazioni", systemImage: "gear")

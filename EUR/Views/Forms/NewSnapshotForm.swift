@@ -10,9 +10,8 @@ import SwiftUI
 struct NewSnapshotForm: View {
     
     @StateObject var AppStorage = PermanentStorage()
-    @State var newInvestimento: Investimento = Investimento(description: "", valore: 0, date: Date())
-    @Binding var isPresentForm: Bool
-    @State var strValore = ""
+    @Binding var newInvestimento: Investimento
+    @Binding var strValore: String
     
     var body: some View {
         Form {
@@ -28,28 +27,9 @@ struct NewSnapshotForm: View {
             }
         }
         .navigationTitle("Snapshot")
-        .toolbar() {
-            ToolbarItem{
-                Button {
-                    newInvestimento.valore = Double(strValore) ?? 0
-                    AppStorage.addInvestimento(newInvestimento)
-                    isPresentForm.toggle()
-                } label: {
-                    Image(systemName: "checkmark.circle.fill")
-                }
-            }
-            ToolbarItem (placement: .topBarLeading){
-                Button {
-                    isPresentForm.toggle()
-                } label: {
-                    Text("Annulla")
-                        .fontWeight(.semibold)
-                }
-            }
-        }
     }
 }
 
 #Preview {
-    NewSnapshotForm(isPresentForm: .constant(true))
+    NewSnapshotForm(newInvestimento: .constant(Investimento(description: "Alleanza", valore: 999, date: Date())), strValore: .constant("999"))
 }

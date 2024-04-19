@@ -22,6 +22,13 @@ struct Income: Identifiable, Codable {
     var date: Date
 }
 
+struct Investimento: Identifiable, Codable, Hashable {
+    var id = UUID()
+    var description: String
+    var valore: Double
+    var date: Date
+}
+
 struct BarChartElement: Identifiable {
     var id = UUID()
     var x: Date
@@ -33,6 +40,16 @@ struct Category: Identifiable, Hashable {
     var name: String
     var fullname: String
     var value: Double
+}
+
+struct WidgetDataStruct {
+    var totalByMonth: Double = 0
+    var deltaByMonth: Double = 0
+}
+
+enum WidgetData {
+    static let totalByMonth = 0
+    static let deltaByMonth = 1
 }
 
 struct MockData {

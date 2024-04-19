@@ -85,6 +85,11 @@ struct DevView: View {
                 } label: {
                     Text("Cancella movimenti")
                 }
+                Button {
+                    AppStorage.deleteInvestimenti()
+                } label: {
+                    Text("Cancella investimenti")
+                }
             }
         }
     }

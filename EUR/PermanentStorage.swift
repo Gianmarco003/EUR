@@ -8,11 +8,12 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-
 final class PermanentStorage: ObservableObject{
     @AppStorage("expenses") private var expensesStorage: [Expense] = []
     @AppStorage("incomes") private var incomesStorage: [Income] = []
     @AppStorage("categories") private var categoriesStorage: [String] = ["None"]
+    @AppStorage("investimenti") private var investimentiStorage: [Investimento] = []
+    @AppStorage("nomeInvestimenti") private var nomeInvestimentiStorage: [String] = ["Alleanza"]
     
     func addExpense(_ expense: Expense) {
         expensesStorage.append(expense)
@@ -31,6 +32,42 @@ final class PermanentStorage: ObservableObject{
         }
         categoriesStorage.remove(at: categoriesStorage.firstIndex(of: "None")!)
         categoriesStorage.insert("None", at: 0)
+    }
+    
+    func addInvestimento(_ Investimento: Investimento) {
+        if !nomeInvestimentiStorage.contains(Investimento.description) {
+            nomeInvestimentiStorage.append(Investimento.description)
+        }
+        investimentiStorage.append(Investimento)
+        investimentiStorage.sort { $0.date > $1.date }
+    }
+    
+    func getNomiInvestimenti() -> [String] {
+        return nomeInvestimentiStorage
+    }
+    
+    func getInvestimenti() -> [Investimento] {
+        return investimentiStorage
+    }
+    
+    func getSnapshots(NomeInvestimento: String) -> [Investimento] {
+        var snapshots: [Investimento] = []
+        for investimento in investimentiStorage {
+            if investimento.description == NomeInvestimento {
+                snapshots.append(investimento)
+            }
+        }
+        return snapshots.sorted{ $0.date > $1.date }
+    }
+    
+    func deleteInvestimenti() {
+        investimentiStorage = []
+        nomeInvestimentiStorage = []
+    }
+    
+    func deleteInvestimento(at offsets: IndexSet) {
+        nomeInvestimentiStorage.remove(atOffsets: offsets)
+        nomeInvestimentiStorage.sort { $0 > $1 }
     }
     
     func deleteExpense(expense: Expense) {
@@ -241,7 +278,8 @@ final class PermanentStorage: ObservableObject{
             return 0
         } else {
             return delta
-        }    }
+        }
+    }
     
     func deltaByYear (year: Int) -> Double {
         let expenses = getTotalExpensesByYear(Year: year)
@@ -354,7 +392,6 @@ final class PermanentStorage: ObservableObject{
     
     func exportExpenses() -> CSVFile{
         print("Start exporting")
-        let fileName = "OutcomesBackup.csv"
         var csvHead = "Descrizione,Importo,Data,Categoria"
         for expense in expensesStorage {
             csvHead.append("\n\(expense.description),\(expense.price),\(expense.date.formatted(date: .numeric, time: .omitted)),\(expense.category)")

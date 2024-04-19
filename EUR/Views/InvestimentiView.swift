@@ -8,8 +8,36 @@
 import SwiftUI
 
 struct InvestimentiView: View {
+    
+    @StateObject var AppStorage = PermanentStorage()
+    @State var isPresentForm: Bool = false
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        @State var investimenti = AppStorage.getInvestimenti()
+        NavigationStack {
+            List {
+                ForEach(AppStorage.getNomiInvestimenti(), id: \.self) { nomeInvestimento in
+                    NavigationLink(destination: DetailedInvestimentoView(snapshots: AppStorage.getSnapshots(NomeInvestimento: nomeInvestimento))) {
+                        CompactInvestimentoView(nomeInvestimento: nomeInvestimento)
+                    }
+                }
+                .onDelete(perform: AppStorage.deleteInvestimento)
+            }
+            .sheet(isPresented: $isPresentForm) {
+                InvestimentiForm(isPresentForm: $isPresentForm)
+            }
+            .toolbar() {
+                ToolbarItem {
+                    Button {
+                        isPresentForm.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                    }
+                }
+            }
+            .navigationTitle("Investimenti")
+        }
     }
 }
 
