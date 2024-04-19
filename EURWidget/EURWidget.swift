@@ -9,56 +9,71 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-    }
-
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+    func placeholder(in context: Context) -> DayEntry {
+        DayEntry(date: Date(), widgetData: [0,0], configuration: ConfigurationAppIntent())
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> DayEntry {
+        DayEntry(date: Date(), widgetData: [0,0], configuration: configuration)
+    }
+    
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<DayEntry> {
+        var entries: [DayEntry] = []
+        let userDefaults = UserDefaults(suiteName: "group.WidgetTunnel")
+        let widgetData = userDefaults?.value(forKey: "WidgetTunnel")
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+        for dayOffset in 0 ..< 7 {
+            let entryDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: currentDate)!
+            let startOfDate = Calendar.current.startOfDay(for: entryDate)
+            let entry = DayEntry(date: startOfDate, widgetData: widgetData as! [Double], configuration: configuration)
             entries.append(entry)
         }
-
+        
         return Timeline(entries: entries, policy: .never)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct DayEntry: TimelineEntry {
     let date: Date
+    let widgetData: [Double]
     let configuration: ConfigurationAppIntent
 }
 
 struct EURWidgetEntryView : View {
-    var entry: Provider.Entry
-
+    var entry: DayEntry
+    
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+        HStack (alignment: .center) {
+            VStack(alignment: .center) {
+                Text(entry.date.formatted(.dateTime.month(.wide)))
+                    .font(.body)
+                    .textCase(.uppercase)
+                    .fontWeight(.semibold)
+                Spacer()
+                Text("\(entry.widgetData[WidgetData.deltaByMonth], specifier: "%.f")%")
+                    .font(.system(size: 45, weight: .heavy))
+                    .fontWeight(.bold)
+                    .foregroundColor(entry.widgetData[WidgetData.deltaByMonth].isLess(than: 0) ? .red : .accent)
+                Spacer()
+                Text("€ \(entry.widgetData[WidgetData.totalByMonth], specifier: "%.2f")")
+                    .font(.system(size: 20, weight: .heavy))
+                    .fontWeight(.bold)
+                    .foregroundColor(entry.widgetData[WidgetData.totalByMonth].isLess(than: 0) ? .red : .accent)
+            }
         }
     }
 }
 
 struct EURWidget: Widget {
     let kind: String = "EURWidget"
-
+    
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             EURWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.windowBackground, for: .widget)
         }
+        .configurationDisplayName("Month")
     }
 }
 
@@ -79,6 +94,16 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     EURWidget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    DayEntry(date: .now, widgetData: [9999,99], configuration: .smiley)
+    DayEntry(date: .now, widgetData: [-9999,-99], configuration: .starEyes)
+}
+
+extension Date {
+    var weekdayDisplayFormat: String {
+        self.formatted(.dateTime.weekday(.wide))
+    }
+    
+    var dayDisplayFormat: String {
+        self.formatted(.dateTime.day())
+    }
 }
